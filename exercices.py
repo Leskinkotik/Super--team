@@ -34,20 +34,25 @@ deviner_le_nombre()
 # Deuxieme exercice
 
 
-def afficher_pyramide(hauteur):
-    for i in range(1, hauteur + 1):
-        print(" " * (hauteur - i), end="")
-        print("*" * (2 * i - 1))
+def afficher_pyramide():
+    # Demander à l'utilisateur la hauteur de la pyramide
+    hauteur = int(input("Entrez la hauteur de la pyramide : "))
+
+    # Vérifier si la hauteur est valide
+    if hauteur <= 0:
+        print("La hauteur doit être un entier positif.")
+    else:
+        # Dessiner la pyramide
+        for i in range(1, hauteur + 1):
+            print(" " * (hauteur - i), end="")
+            print("*" * (2 * i - 1))
 
 
-hauteur = int(input("Entrez la hauteur de la pyramide : "))
-if hauteur <= 0:
-    print("La hauteur doit être un entier positif.")
-else:
-    afficher_pyramide(hauteur)
+afficher_pyramide()
 
 
 # Troisieme exercice
+
 
 def trouver_plus_grand_nombre():
     # Demander à l'utilisateur d'entrer trois nombres
@@ -93,15 +98,11 @@ print("Le message décodé est :", message_decode)
 # Cinquieme exercice
 
 
-def est_palindrome(mot):
-    return mot == mot[::-1]
-
-
 def compter_palindromes(liste_mots):
     nb_palindromes = 0
 
     for mot in liste_mots:
-        if est_palindrome(mot):
+        if mot == mot[::-1]:
             nb_palindromes += 1
 
     return nb_palindromes
