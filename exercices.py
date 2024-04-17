@@ -28,5 +28,20 @@ def deviner_le_nombre():
           nombre_mystere)
 
 
-# Appel de la fonction principale
 deviner_le_nombre()
+
+
+# Deuxieme exercice
+
+
+def afficher_pyramide(hauteur):
+    for i in range(1, hauteur + 1):
+        print(" " * (hauteur - i), end="")
+        print("*" * (2 * i - 1))
+
+
+hauteur = int(input("Entrez la hauteur de la pyramide : "))
+if hauteur <= 0:
+    print("La hauteur doit être un entier positif.")
+else:
+    afficher_pyramide(hauteur)
