@@ -1,44 +1,41 @@
-# Définition de la classe 'Node', qui représente un nœud dans un arbre binaire.
-class Node:
-    # Constructeur de la classe 'Node'. 
-    def __init__(self, key):
-    # Je définis ici chaque nœud avec trois attributs : left, right, et value.
-        self.left = None   
-        # Je définis 'left' pour pointer vers le nœud enfant gauche, initialisé à None.
-        self.right = None  
-        # Je définis 'right' pour pointer vers le nœud enfant droit, initialisé à None.
-        self.value = key   # Je stocke la clé (ou la valeur) du nœud.
+from graphviz import Digraph
+import networkx as nx
+# jimportmodule NetworkX renomme nx facilitersonutilisation
+import matplotlib.pyplot as plt
+# j'mport module pyplot de Matplotlib,renommer pltprfaciliterutilisation
+G = nx.Graph()
+class Person:
+    def __init__(self, name):
+        self.name = name
+        self.parents = []
+# Création des personnes
+child1 = Person("Enfant 1")
+child2 = Person("Enfant 2")
+parent1 = Person("Parent 1")
+parent2 = Person("Parent 2")
+grandparent1 = Person("Grand-parent 1")
+grandparent2 = Person("Grand-parent 2")
 
-# Fonction pour insérer une nouvelle clé dans l'arbre binaire de recherche.
-def insert(root, key):
-    if root is None:
-    # Si le nœud actuel est vide, je crée un nouveau nœud avec la clé donnée.
-        return Node(key)
-    else:
-        # Sinon, je compare la clé avec la valeur du nœud actuel pour décider de l'insertion à gauche ou à droite.
-        if root.value < key:
-            root.right = insert(root.right, key)  # Insertion à droite si la clé est plus grande.
-        else:
-            root.left = insert(root.left, key)   # Insertion à gauche si la clé est plus petite.
-    return root  # Je retourne le nœud actuel après l'insertion.
+# Définir les relations familiales
+child1.parents = [parent1, parent2]
+child2.parents = [parent1, parent2]
+parent1.parents = [grandparent1]
+parent2.parents = [grandparent2]
 
-# Fonction pour effectuer un parcours infixe (Inorder Traversal) de l'arbre.
-def inorder_traversal(root):
-    if root:
-        inorder_traversal(root.left)   # D'abord, je visite le sous-arbre gauche.
-        print(root.value, end=' ')     # Ensuite, j'affiche la valeur du nœud courant.
-        inorder_traversal(root.right)  # Enfin, je visite le sous-arbre droit.
+# Créer un graphique à l'aide de Graphviz
+dot = Digraph(comment='Arbre Généalogique')
 
-# Je crée un arbre avec une valeur racine de 50.
-r = Node(50)
+# Fonction pour ajouter des nœuds et des liens au graphique
+def add_to_graph(person, graph):
+    graph.node(person.name)
+    for parent in person.parents:
+        graph.node(parent.name)
+        graph.edge(parent.name, person.name)
+        add_to_graph(parent, graph)
 
-# Je procède à l'insertion de nouveaux nœuds dans l'arbre.
-r = insert(r, 30)
-r = insert(r, 20)
-r = insert(r, 40)
-r = insert(r, 70)
-r = insert(r, 60)
-r = insert(r, 80)
+# Ajouter la famille à la visualisation
+add_to_graph(child1, dot)
+add_to_graph(child2, dot)
 
-# J'affiche l'arbre en utilisant le parcours infixe, qui affiche les valeurs dans l'ordre croissant.
-inorder_traversal(r)
+# Enregistrer et afficher le graphique
+dot.render('family_tree.gv', view=True)
