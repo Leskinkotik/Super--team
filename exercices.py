@@ -1,4 +1,4 @@
-"""import random
+import random
 
 # Premier exercice Boucles
 
@@ -44,18 +44,17 @@ hauteur = int(input("Entrez la hauteur de la pyramide : "))
 if hauteur <= 0:
     print("La hauteur doit être un entier positif.")
 else:
-    afficher_pyramide(hauteur)"""
+    afficher_pyramide(hauteur)
 
 
 # Troisieme exercice
 
-"""def trouver_plus_grand_nombre():
+def trouver_plus_grand_nombre():
     # Demander à l'utilisateur d'entrer trois nombres
     nombre1 = float(input("Entrez le premier nombre : "))
     nombre2 = float(input("Entrez le deuxième nombre : "))
     nombre3 = float(input("Entrez le troisième nombre : "))
 
-    # Comparer les nombres pour trouver le plus grand
     if nombre1 >= nombre2 and nombre1 >= nombre3:
         plus_grand_nombre = nombre1
     elif nombre2 >= nombre1 and nombre2 >= nombre3:
@@ -63,12 +62,10 @@ else:
     else:
         plus_grand_nombre = nombre3
 
-    # Afficher le résultat
     print("Le plus grand nombre est :", plus_grand_nombre)
 
 
-# Appeler la fonction pour exécuter le code
-trouver_plus_grand_nombre()"""
+trouver_plus_grand_nombre()
 
 
 # Quatrieme exercice
@@ -89,8 +86,28 @@ def decode_message(message):
 
 message_code = "72 101 108 108 111 44 32 87 111 114 108 100"
 
-# Appeler la fonction pour décoder le message
 message_decode = decode_message(message_code)
 
-# Afficher le message décodé
 print("Le message décodé est :", message_decode)
+
+# Cinquieme exercice
+
+
+def est_palindrome(mot):
+    return mot == mot[::-1]
+
+
+def compter_palindromes(liste_mots):
+    nb_palindromes = 0
+
+    for mot in liste_mots:
+        if est_palindrome(mot):
+            nb_palindromes += 1
+
+    return nb_palindromes
+
+
+liste_mots = ["radar", "level", "python", "stats", "racecar"]
+nb_palindromes = compter_palindromes(liste_mots)
+
+print("Nombre de palindromes dans la liste :", nb_palindromes)
