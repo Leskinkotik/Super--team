@@ -1,4 +1,4 @@
-import random
+"""import random
 
 # Premier exercice Boucles
 
@@ -44,4 +44,28 @@ hauteur = int(input("Entrez la hauteur de la pyramide : "))
 if hauteur <= 0:
     print("La hauteur doit être un entier positif.")
 else:
-    afficher_pyramide(hauteur)
+    afficher_pyramide(hauteur)"""
+
+
+# Troisieme exercice
+
+def trouver_plus_grand_nombre():
+    # Demander à l'utilisateur d'entrer trois nombres
+    nombre1 = float(input("Entrez le premier nombre : "))
+    nombre2 = float(input("Entrez le deuxième nombre : "))
+    nombre3 = float(input("Entrez le troisième nombre : "))
+
+    # Comparer les nombres pour trouver le plus grand
+    if nombre1 >= nombre2 and nombre1 >= nombre3:
+        plus_grand_nombre = nombre1
+    elif nombre2 >= nombre1 and nombre2 >= nombre3:
+        plus_grand_nombre = nombre2
+    else:
+        plus_grand_nombre = nombre3
+
+    # Afficher le résultat
+    print("Le plus grand nombre est :", plus_grand_nombre)
+
+
+# Appeler la fonction pour exécuter le code
+trouver_plus_grand_nombre()
