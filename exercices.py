@@ -49,7 +49,7 @@ else:
 
 # Troisieme exercice
 
-def trouver_plus_grand_nombre():
+"""def trouver_plus_grand_nombre():
     # Demander à l'utilisateur d'entrer trois nombres
     nombre1 = float(input("Entrez le premier nombre : "))
     nombre2 = float(input("Entrez le deuxième nombre : "))
@@ -68,4 +68,29 @@ def trouver_plus_grand_nombre():
 
 
 # Appeler la fonction pour exécuter le code
-trouver_plus_grand_nombre()
+trouver_plus_grand_nombre()"""
+
+
+# Quatrieme exercice
+
+def decode_message(message):
+    # Diviser la chaîne de nombres en une liste de nombres
+    nombres = message.split()
+
+    # Initialiser une chaîne vide pour stocker le message décodé
+    message_decode = ""
+
+    # Convertir chaque nombre selon la table ASCII
+    for nombre in nombres:
+        message_decode += chr(int(nombre))
+
+    return message_decode
+
+
+message_code = "72 101 108 108 111 44 32 87 111 114 108 100"
+
+# Appeler la fonction pour décoder le message
+message_decode = decode_message(message_code)
+
+# Afficher le message décodé
+print("Le message décodé est :", message_decode)
