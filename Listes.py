@@ -1,24 +1,40 @@
 """Écrivez un programme Python qui prend une liste et
 retourne une nouvelle liste contenant uniquement les
 éléments uniques de la première liste."""
-liste = [2,2, 'g' ,2, 'a' , 'a' ,1,5]
-liste_vide = []
-for element in liste:
-    if element not in liste_vide:
-        liste_vide.append(element)
-print("Liste des éléments uniques :", liste_vide)
+
+
+def elements_uniques(liste):
+
+    uniques = set()
+
+    for element in liste:
+        if element not in uniques:
+            uniques.add(element)
+
+    return list(uniques)
+
+
+liste = [1, 2, 4, 4, 2, 3, 5]
+resultat = elements_uniques(liste)
+print(liste)
+print(resultat)
 
 """Écrivez un programme Python qui effectue une rotation à
 droite des éléments d'une liste. La rotation doit être
 définie par l'utilisateur"""
 
-liste_initiale = [1,2,3,9]
-rotation = int(input("ecrire le nombre de rotations: "))
-# Si le nombre de rotations est supérieur à la longueur de la liste, ajuster
-if rotation > len(liste_initiale):
-    rotation = rotation - len(liste_initiale)
-indice_rotation = len(liste_initiale) - rotation
 
-liste_apres_rotation = liste_initiale[indice_rotation:] + liste_initiale[:indice_rotation]
+def rotation_droite(liste, rotation):
 
-print("Liste après rotation à droite de", rotation, "positions :", liste_apres_rotation)
+    if not liste or rotation == 0:
+        return liste
+
+    rotation = rotation % len(liste)
+    return liste[-rotation:] + liste[:-rotation]
+
+
+liste = [1, 2, 3, 4, 5]
+rotation = int(input("Entrez le nombre de rotations à droite : "))
+resultat = rotation_droite(liste, rotation)
+print(liste)
+print(rotation, "fois :", resultat)
